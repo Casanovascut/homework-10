@@ -19,9 +19,9 @@ class Manager extends Employee {
         <p class="card-text ">Manager</p>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">${this.id}</li>
-        <li class="list-group-item">Email: ${this.email} <a href="#" class="card-link">Card link</a></li>
-
+        <li class="list-group-item">Employee ID: ${this.id}</li>
+        <li class="list-group-item">Email:<a href="#" class="card-link">${this.email}</a></li>
+        <li class="list-group-item">Office number: ${this.officeNumber}</li>
     </ul>
 </div>
 `

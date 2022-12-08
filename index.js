@@ -1,6 +1,8 @@
 const { writeFile } = require('fs').promises;
 const { fstat } = require('fs');
 const inquirer = require('inquirer');
+const Engineer = require('./assets/library/engineer');
+const Intern = require('./assets/library/intern');
 const Manager = require("./assets/library/manager")
 const teamMembers = []
 const promptMain = () => {
@@ -15,6 +17,12 @@ const promptMain = () => {
     switch(data.typeOfEmployee){
     case 'manager':
         promptManager();
+        break
+    case 'engineer':
+        promptEngineer()
+        break
+    case 'intern':
+        promptIntern()
         break
     }
 })}
@@ -36,7 +44,7 @@ const promptManager = () => {
     inquirer.prompt([
 {
         type:'input',
-        name: 'employeeName',
+        name: 'name',
         message: 'What is the employees name?'
     },{
         type: 'input',
@@ -52,8 +60,58 @@ const promptManager = () => {
         message: 'what is the managers office number?'
     }
     ]).then((data)=>{
-        const manager = new Manager(data.name,data.id,data.email,data.officenumber)
+        const manager = new Manager(data.name,data.id,data.email,data.officeNumber)
             teamMembers.push(manager)
+        promptAnother()
+    })
+}
+const promptEngineer = () => {
+    inquirer.prompt([
+{
+        type:'input',
+        name: 'name',
+        message: 'What is the employees name?'
+    },{
+        type: 'input',
+        name: 'id',
+        message: 'What is the employees id number?'
+    },{
+        type: 'input',
+        name: 'email',
+        message: 'what is the employees email address'
+    },{
+        type: 'input',
+        name: 'gitHub',
+        message: 'what is the engineers git hub page?'
+    }
+    ]).then((data)=>{
+        const engineer = new Engineer(data.name,data.id,data.email,data.gitHub)
+            teamMembers.push(engineer)
+        promptAnother()
+    })
+}
+const promptIntern = () => {
+    inquirer.prompt([
+{
+        type:'input',
+        name: 'name',
+        message: 'What is the employees name?'
+    },{
+        type: 'input',
+        name: 'id',
+        message: 'What is the employees id number?'
+    },{
+        type: 'input',
+        name: 'email',
+        message: 'what is the employees email address'
+    },{
+        type: 'input',
+        name: 'school',
+        message: 'what is the interns school?'
+    }
+    ]).then((data)=>{
+        const intern = new Intern(data.name,data.id,data.email,data.school)
+            teamMembers.push(intern)
         promptAnother()
     })
 }
