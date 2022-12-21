@@ -28,7 +28,7 @@ None
 install node packages, including jest.
 
 ## Usage
-
+(video walkthrough needs to be downloaded)
 video:[label](assets/homework10%20video.mp4)
 
 ## contributing
